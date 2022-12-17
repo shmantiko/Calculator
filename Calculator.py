@@ -25,7 +25,7 @@ def wurzel(radikand, wurzelexponent):
         print("Error: does not handle complex numbers")
         return
     border1 = 0
-    border2 = 100
+    border2 = radikand
     guess = randint(border1, border2)
     guess_p = potenz(guess, wurzelexponent)
     while True:
@@ -52,7 +52,7 @@ def wurzel(radikand, wurzelexponent):
 #exponent = randint(-5, 5)
 
 radikand = 9 #randint(0, 100)
-wurzelexponent = 2 #randint(0,5)
+wurzelexponent = 7 #randint(0,5)
 
     
 print(radikand, wurzelexponent)
