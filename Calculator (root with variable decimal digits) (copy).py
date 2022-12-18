@@ -29,6 +29,7 @@ def wurzel(radikand, wurzelexponent, decimalDigits):
     guess = 1
     if radikand >= 1:
         while True:
+            # This if below doesn't work the comparison is wrong
             if border1 - border2 <= 1:
                 guess = uniform(border1, border2)
             else:
@@ -39,7 +40,8 @@ def wurzel(radikand, wurzelexponent, decimalDigits):
                 return(result)
                 break
             elif border2 - border1 <= potenz(0.1, decimalDigits) * 0.1:
-                result = round(guess, 9)
+                #changed the number to decimal digit because the output was still 9 decimal places
+                result = round(guess, decimalDigits)
                 return(result)
                 break
             elif guess_p > radikand:
@@ -79,7 +81,8 @@ def wurzel(radikand, wurzelexponent, decimalDigits):
 
 radikand = 999999 #randint(0, 100)
 wurzelexponent = 4 #randint(0,5)
-
+decimalDigits = 3
     
 print(radikand, wurzelexponent)
-print(wurzel(radikand, wurzelexponent, 9))
+print(wurzel(radikand, wurzelexponent, decimalDigits))
+#added the variable instead of the number
