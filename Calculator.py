@@ -1,6 +1,5 @@
 from random import *
 
-#mostly the same function as before
 def potenz(basis, exponent):
     result = basis
     if exponent > 0:
@@ -15,45 +14,50 @@ def potenz(basis, exponent):
         result = 1
     return(result)
 
-# Improved version by j
-
-def wurzel(radikand, wurzelexponent):
+def wurzel(radikand, wurzelexponent, decimal_digits):
     if wurzelexponent == 0:
-        print("Error: not a valid exponent")
-        return
+        return("Error: not a valid exponent")
     elif radikand < 0:
-        print("Error: does not handle complex numbers")
-        return
+        return("Error: does not handle complex numbers")
+    if wurzelexponent < 0:
+            return("Error: does not compute negative exponents yet")
     border1 = 0
     border2 = radikand
-    guess = randint(border1, border2)
-    guess_p = potenz(guess, wurzelexponent)
+    counter = 0
     while True:
+        counter = counter + 1
+        if border1 - border2 < -1:
+            guess = randint(border1, border2)
+        else:
+            guess = uniform(border1, border2)
+        guess_p = potenz(guess, wurzelexponent)
         if guess_p == radikand:
-            result = guess
-            return(result)
-            break
+            print(f"I have guessed {counter} times")
+            return(guess)
+        elif border2 - border1 <= potenz(0.1, decimal_digits + 1):
+            print(f"I have guessed {counter} times")
+            return(round(guess, decimal_digits))
         elif guess_p > radikand:
             border2 = guess
         elif guess_p < radikand:
             border1 = guess
         else:
-            print("Error")
-            break
-        guess = randint(border1, border2)
-        guess_p = potenz(guess, wurzelexponent)
-        if border1 - border2 == -1:
-            print("Error: not int")
-            break
+            return("Error")
 
 # Test Values
 
 #basis = randint(0, 10)
 #exponent = randint(-5, 5)
 
-radikand = 9 #randint(0, 100)
-wurzelexponent = 7 #randint(0,5)
-
+radikand = 2 #randint(0, 100)
+wurzelexponent = 1 #randint(1,5)
+decimal_digits =  -1 #randint(1, 10)
     
-print(radikand, wurzelexponent)
-print(wurzel(radikand, wurzelexponent))
+print(radikand, wurzelexponent, decimal_digits)
+print(wurzel(radikand, wurzelexponent, decimal_digits))
+
+# things that break the function
+# - wurzelexponent cant be with a comma
+# - negative exponents
+# - comma numbers in decimal digits
+# - negative number in decimal digits sometimes outputs 0.0 sometimes 2
