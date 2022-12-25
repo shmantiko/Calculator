@@ -1,7 +1,5 @@
 from random import *
 
-#naming is now consistently in english
-#fixed code for negative exponents
 def exponentiation(base, exponent):
     result = base
     if exponent > 0:
