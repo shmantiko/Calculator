@@ -1,15 +1,14 @@
 from random import *
 
-def potenz(basis, exponent):
-    result = basis
+def exponentiation(base, exponent):
+    result = base
     if exponent > 0:
-        for x in range(exponent - 1):
-            result = result * basis
+        for x in range(exponent -1):
+            result = result * base
     elif exponent < 0:
         for x in range(exponent, -1):
-            result = result * basis
-        if exponent < 0:
-            result = 1 / result
+            result = result * base
+        result = 1 / result
     else:
         result = 1
     return(result)
@@ -30,11 +29,11 @@ def wurzel(radikand, wurzelexponent, decimal_digits):
             guess = randint(border1, border2)
         else:
             guess = uniform(border1, border2)
-        guess_p = potenz(guess, wurzelexponent)
+        guess_p = exponentiation(guess, wurzelexponent)
         if guess_p == radikand:
             print(f"I have guessed {counter} times")
             return(guess)
-        elif border2 - border1 <= potenz(0.1, decimal_digits + 1):
+        elif border2 - border1 <= exponentiation(0.1, decimal_digits + 1):
             print(f"I have guessed {counter} times")
             return(round(guess, decimal_digits))
         elif guess_p > radikand:
