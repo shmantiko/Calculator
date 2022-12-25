@@ -15,7 +15,7 @@ def exponentiation(base, exponent):
 
 def root(radicand, index, decimalDigits):
     if index == 0:
-        return("Error: not a valid exponent")
+        return("Error: not a valid index")
     elif radicand < 0:
         return("Error: does not handle complex numbers")
     if index < 0:
@@ -48,15 +48,9 @@ def root(radicand, index, decimalDigits):
 #basis = randint(0, 10)
 #exponent = randint(-5, 5)
 
-radicand = 2 #randint(0, 100)
-index = 1 #randint(1,5)
-decimalDigits =  -1 #randint(1, 10)
+radicand = 4 #randint(0, 100)
+index = 2 #randint(1,5)
+decimalDigits = 1 #randint(1, 10)
     
 print(radicand, index, decimalDigits)
 print(root(radicand, index, decimalDigits))
-
-# things that break the function
-# - index cant be with a comma
-# - negative exponents
-# - comma numbers in decimal digits
-# - negative number in decimal digits sometimes outputs 0.0 sometimes 2
